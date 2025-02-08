@@ -13,7 +13,7 @@ const port = process.env.PORT;
 const db = process.env.MONGO_URL;
 
 const corsOptions = {
-  origin:"http://localhost:3000 ",
+  origin:"https://ajaytodos.netlify.app/login",
   credentials: true, 
   methods: "GET, POST, PUT, DELETE",
   alloweHeaders: ["Content-Type", "Authorization"],
