@@ -1,7 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
 import userrouter from "./Routes/userRouter.js";
-import todorouter from "./Routes/todoRouter.js";
 import dotenv from "dotenv";
 import cors from "cors";
 import cookieParser from "cookie-parser";
@@ -13,7 +12,7 @@ const port = process.env.PORT;
 const db = process.env.MONGO_URL;
 
 const corsOptions = {
-  origin:"https://ajaytodos.netlify.app/login",
+  origin:"http://localhost:3000",
   credentials: true, 
   methods: "GET, POST, PUT, DELETE",
   alloweHeaders: ["Content-Type", "Authorization"],
@@ -34,7 +33,6 @@ app.use(express.json());
 app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use("/api/user", userrouter);
-app.use("/api/todo", todorouter);
 
 app.listen(port, () => {
   console.log(`http://localhost:${port}`);

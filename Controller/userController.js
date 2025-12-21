@@ -1,8 +1,6 @@
 import userModel from "../Models/UserModel.js";
 import bcrypt from "bcryptjs";
 import { z } from "zod";
-import { jwttoken } from "../Jwt/token.js";
-import stringifySafe from "json-stringify-safe"
 
 export const userSchema = z.object({
   name: z.string().min(3, { message: "Name Must be 3 or more characters long" }),
@@ -16,7 +14,7 @@ export const LoginSchema = z.object({
   email: z.string().email({ message: "Invalid email address" }),
   password: z
     .string()
-    .min(4, { message: "Password Must be 4 o    r more characters long" }),
+    .min(4, { message: "Password Must be 4 or more characters long" }),
 });
 
 export const register = async (req, res) => {
@@ -51,11 +49,9 @@ export const register = async (req, res) => {
       email,
       password: hashpassword,
     });
-    const token = await jwttoken(newuser._id, res);
     return res.status(200).json({
       message: "Account Created Successfully!",
-      newuser,
-      token,
+      newuser
     });
   } catch (error) {
     console.log(error);
@@ -95,11 +91,10 @@ export const login = async (req, res) => {
         message: "Wrong Password",
       });
     }
-    const token = await jwttoken(preuser._id, res);
+    
     return res.status(200).json({
       message: "Login Successful",
-      preuser,
-      token
+      preuser
     });
   } catch (error) {
     console.log(error);
