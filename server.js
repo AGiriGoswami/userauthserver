@@ -12,10 +12,8 @@ const port = process.env.PORT;
 const db = process.env.MONGO_URL;
 
 const corsOptions = {
-  origin:"http://localhost:3000",
-  credentials: true, 
-  methods: "GET, POST, PUT, DELETE",
-  alloweHeaders: ["Content-Type", "Authorization"],
+  origin:"https://wondrous-manatee-ad7dae.netlify.app",
+  credentials: true
 };
 
 //Database Connection
