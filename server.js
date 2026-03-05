@@ -12,7 +12,7 @@ const port = process.env.PORT;
 const db = process.env.MONGO_URL;
 
 const corsOptions = {
-  origin:"https://wondrous-manatee-ad7dae.netlify.app",
+  origin:"https://usersauthentication.netlify.app/",
   credentials: true
 };
 
